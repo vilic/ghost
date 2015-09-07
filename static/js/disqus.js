@@ -2,17 +2,16 @@ var disqus_shortname = disqus_shortname || '';
 var disqus_identifier = '';
 
 (function () {
-    var $postFooter = $('footer.post-footer');
+    var postFooter = document.getElementsByClassName('post-footer')[0];
     
-    if (!$postFooter.length) {
+    if (!postFooter) {
         return false;
     }
     
-    var $thread = $(document.createElement('div')).prop('id', 'disqus_thread');
+    var thread = document.createElement('div');
+    thread.id = 'disqus_thread';
     
-    $postFooter
-        .first()
-        .after($thread);
+    postFooter.parentNode.insertBefore(thread, postFooter.nextSibling);
     
     return true;
 })() && (function() {
